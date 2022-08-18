@@ -33,13 +33,27 @@ class _TripStatusState extends State<TripStatus> {
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04),
-                color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: Constants.height * 0.02,),
+                      Center(
+                      child: Container(
+                        height: 4,
+                        width: 60,
+                        decoration: BoxDecoration(
+                   color: Colors.grey,
+                  borderRadius: BorderRadius.circular(50),
+                ),  
+                      ),
+                    ),
+                    SizedBox(height: Constants.height * 0.03),
                       Row(
                         children: [
                           Text(
@@ -176,8 +190,8 @@ class _TripStatusState extends State<TripStatus> {
                           SizedBox(width: Constants.width * 0.04,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
+                            children:  [
+                              const Text(
                                 'Pickup Location',
                                 style: TextStyle(
                                     color: Color(0xff7A7A7B),
@@ -187,7 +201,7 @@ class _TripStatusState extends State<TripStatus> {
                               SizedBox(height: Constants.height * 0.01,),
                               Container(
                                 width: Constants.width * 0.82,
-                                child: Text(
+                                child:const Text(
                                   'Dwarka, Sector -65, New Delhi sdf sd sd sd fsd fsdf ',
                                   style: TextStyle(
                                       color: Color(0xff565657),
@@ -202,7 +216,7 @@ class _TripStatusState extends State<TripStatus> {
                                 color: Color(0xff7A7A7B),
                               ),
                               SizedBox(height: Constants.height * 0.02,),
-                              Text(
+                             const Text(
                                 'Drop Location',
                                 style: TextStyle(
                                     color: Color(0xff7A7A7B),
@@ -212,7 +226,7 @@ class _TripStatusState extends State<TripStatus> {
                               SizedBox(height: Constants.height * 0.01,),
                               Container(
                                 width: Constants.width * 0.82,
-                                child: Text(
+                                child:const Text(
                                   'DLF Cyber Hub, Gurgaon',
                                   style: TextStyle(
                                       color: Color(0xff565657),
@@ -220,6 +234,33 @@ class _TripStatusState extends State<TripStatus> {
                                   ),
                                 ),
                               ),
+                           SizedBox(height: Constants.height * 0.02,),
+                           Container(
+                            height: Constants.height * 0.07,
+                            width: Constants.width * 0.82,
+                            decoration: BoxDecoration(
+                                  color: Constants.themeColor,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                            alignment: Alignment.center,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.call_sharp,color: Colors.black,),
+                                SizedBox(width: 5),
+                                Text(
+                                  "Call Driver",
+                                style: TextStyle(
+                                          fontFamily: 'bold',
+                                          fontSize: Constants.width * 0.05,
+                                          color: Color(0xff282829)
+                                      ),
+                                )
+                              ],
+                            ),
+                           ),
+                           SizedBox(height: Constants.height * 0.02,)
                             ],
                           )
                         ],

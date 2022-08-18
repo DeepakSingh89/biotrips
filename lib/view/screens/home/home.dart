@@ -85,10 +85,24 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04),
-                color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),                
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: Constants.height * 0.02,),
+                    Center(
+                      child: Container(
+                        height: 4,
+                        width: 60,
+                        decoration: BoxDecoration(
+                   color: Colors.grey,
+                  borderRadius: BorderRadius.circular(50),
+                ),    
+                ),
+              ),
                     SizedBox(height: Constants.height * 0.02,),
                     Text(
                       'You have 3 Trips Today.',

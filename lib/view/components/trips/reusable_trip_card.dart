@@ -17,7 +17,7 @@ class _ReusableTripCardState extends State<ReusableTripCard> {
       margin: EdgeInsets.only(bottom: Constants.height * 0.02),
       padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.03, vertical: Constants.height * 0.02),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xffF5F5F5),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Color(0xffEAEAEB))
       ),
