@@ -3,6 +3,7 @@ import 'package:biotrips/helpers/utils.dart';
 import 'package:biotrips/view/components/trips/reusable_passenger_card.dart';
 import 'package:biotrips/view/screens/trips/trip_details.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class TripStatus extends StatefulWidget {
   const TripStatus({Key? key}) : super(key: key);
@@ -12,24 +13,59 @@ class TripStatus extends StatefulWidget {
 }
 
 class _TripStatusState extends State<TripStatus> {
+  var initialCameraPosition = CameraPosition(target: LatLng(19.2307, 72.8117), zoom: 11);
+  Marker _origin = Marker(
+    markerId: MarkerId('origin'),
+    infoWindow: InfoWindow(title: 'Origin'),
+    icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+    position: LatLng(19.4564, 72.8567)
+  );
+
+  Marker _destination = Marker(
+      markerId: MarkerId('destination'),
+      infoWindow: InfoWindow(title: 'Destination'),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      position: LatLng(19.2307, 72.8117)
+  );
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
+      // extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: GestureDetector(
           onTap: (){
             Navigator.pop(context);
           },
           child: Icon(Icons.arrow_back, color: Colors.black,)),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Stack(
         children: [
-          Utils.googleMapWidget,
+          Expanded(
+            child: GoogleMap(
+              initialCameraPosition: initialCameraPosition,
+              markers: {
+                _origin,
+                _destination,
+              },
+              polylines: {
+                Polyline(
+                  polylineId: PolylineId('overview_polyline'),
+                  color: Constants.themeColor,
+                  width: 5,
+                  points: [
+                    _origin.position,
+                    _destination.position,
+                  ]
+                )
+              },
+            ),
+          ),
           DraggableScrollableSheet(
-            minChildSize: 0.4,
+            minChildSize: 0.3,
             maxChildSize: 1,
+            initialChildSize: 0.3,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04),
