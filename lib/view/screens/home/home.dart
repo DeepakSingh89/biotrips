@@ -85,9 +85,12 @@ class _HomeState extends State<Home> {
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04),
-                decoration: BoxDecoration(
+                decoration:const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(25),
+                    topLeft: Radius.circular(25),
+                  ) 
                 ),                
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

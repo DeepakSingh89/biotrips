@@ -2,6 +2,7 @@
 import 'package:biotrips/view/screens/authentication/login.dart';
 import 'package:biotrips/view/screens/authentication/verify_otp.dart';
 import 'package:biotrips/view/screens/dashboard/dashboard.dart';
+import 'package:biotrips/view/screens/emergency/emergency_screen.dart';
 import 'package:biotrips/view/screens/home/trip_status.dart';
 import 'package:biotrips/view/screens/onboarding/onboarding1.dart';
 import 'package:biotrips/view/screens/onboarding/onboarding2.dart';
@@ -9,6 +10,7 @@ import 'package:biotrips/view/screens/onboarding/onboarding3.dart';
 import 'package:biotrips/view/screens/profile/edit_profile.dart';
 import 'package:biotrips/view/screens/profile/help_center.dart';
 import 'package:biotrips/view/screens/profile/notifications.dart';
+import 'package:biotrips/view/screens/safety/safety_guidelines.dart';
 import 'package:biotrips/view/screens/trips/trip_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => TripDetails());
       case '/TripStatus':
         return MaterialPageRoute(builder: (_) => TripStatus());
+      case '/SafetyGuidelines':
+        return MaterialPageRoute(builder: (_) => SafetyGuidelines());
+        case '/EmergencyScreen':
+        return MaterialPageRoute(builder: (_) => EmergencyScreen());
       default:
       // If there is no such named route in the switch statement, e.g. /third
         return MaterialPageRoute(

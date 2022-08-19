@@ -34,7 +34,7 @@ class _TripStatusState extends State<TripStatus> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: (){
-            Navigator.pop(context);
+            Navigator.pushNamed(context,'/Dashboard');
           },
           child: Icon(Icons.arrow_back, color: Colors.black,)),
         backgroundColor: Colors.transparent,
@@ -69,9 +69,12 @@ class _TripStatusState extends State<TripStatus> {
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+                   borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(25),
+                    topLeft: Radius.circular(25),
+                  ) 
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,
@@ -270,37 +273,73 @@ class _TripStatusState extends State<TripStatus> {
                                   ),
                                 ),
                               ),
-                           SizedBox(height: Constants.height * 0.02,),
-                           Container(
-                            height: Constants.height * 0.07,
-                            width: Constants.width * 0.82,
-                            decoration: BoxDecoration(
-                                  color: Constants.themeColor,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                            alignment: Alignment.center,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.call_sharp,color: Colors.black,),
-                                SizedBox(width: 5),
-                                Text(
-                                  "Call Driver",
-                                style: TextStyle(
-                                          fontFamily: 'bold',
-                                          fontSize: Constants.width * 0.05,
-                                          color: Color(0xff282829)
-                                      ),
-                                )
-                              ],
-                            ),
-                           ),
-                           SizedBox(height: Constants.height * 0.02,)
+                           SizedBox(height: Constants.height * 0.02,), 
                             ],
                           )
                         ],
                       ),
+               Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                               Container(
+                                 width: Constants.width * 0.5,
+                                //  padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.12, vertical: Constants.height * 0.015),
+                                 height: Constants.height * 0.06,                            
+                                decoration: BoxDecoration(
+                                      color: Constants.themeColor,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/icons/call.png', fit: BoxFit.fill, height: Constants.height * 0.025),
+                                    SizedBox(width: 8),
+                                    Text(
+                                      "Call Driver",
+                                    style: TextStyle(
+                                              fontFamily: 'bold',
+                                              fontSize: Constants.width * 0.05,
+                                              color: Color(0xff282829)
+                                          ),
+                                    )
+                                  ],
+                                ),
+                               ),
+                               InkWell(
+                                onTap: () => Navigator.pushNamed(context, '/EmergencyScreen'),
+                                 child: Container(
+                                 width: Constants.width * 0.4,
+                                  //  padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.12, vertical: Constants.height * 0.015),
+                                  height: Constants.height * 0.06,                            
+                                  decoration: BoxDecoration(
+                                        color: Colors.red.shade100,
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all( width: 1.0,color:Color(0xffFF0000) )
+                                      ),
+                                  alignment: Alignment.center,
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      
+                                      SizedBox(width: 5),
+                                      Text(
+                                        "Emergency",
+                                      style: TextStyle(
+                                                fontFamily: 'bold',
+                                                fontSize: Constants.width * 0.05,
+                                                color: Color(0xffFF0000)
+                                            ),
+                                      )
+                                    ],
+                                  ),
+                                 ),
+                               ),
+                             ],
+                           ),
+                           SizedBox(height: Constants.height * 0.02),
 
                     ],
                   ),
