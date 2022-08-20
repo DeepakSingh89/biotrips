@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:biotrips/endpoint/provider/user_repo.dart';
+import 'package:biotrips/endpoint/server/api_client.dart';
 import 'package:biotrips/helpers/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +14,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController controller = TextEditingController(text: '');
+  TextEditingController controller = TextEditingController();
   bool showErrorMessage = false;
   @override
   Widget build(BuildContext context) {
@@ -23,27 +27,35 @@ class _LoginState extends State<Login> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: Constants.height * 0.07,),
-                Image.asset('assets/authentication/login.png', fit: BoxFit.fill, height: Constants.height * 0.3,),
-                SizedBox(height: Constants.height * 0.04,),
+                SizedBox(
+                  height: Constants.height * 0.07,
+                ),
+                Image.asset(
+                  'assets/authentication/login.png',
+                  fit: BoxFit.fill,
+                  height: Constants.height * 0.3,
+                ),
+                SizedBox(
+                  height: Constants.height * 0.04,
+                ),
                 Text(
                   'Sign in to see your Trips',
                   style: TextStyle(
-                      fontFamily: 'bold',
-                      fontSize: Constants.width * 0.065
-                  ),
+                      fontFamily: 'bold', fontSize: Constants.width * 0.065),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: Constants.height * 0.03,),
+                SizedBox(
+                  height: Constants.height * 0.03,
+                ),
                 Text(
                   'Enter your phone number, we will verify this with OTP.',
                   style: TextStyle(
-                      fontFamily: 'regular',
-                      fontSize: Constants.width * 0.04
-                  ),
+                      fontFamily: 'regular', fontSize: Constants.width * 0.04),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: Constants.height * 0.05,),
+                SizedBox(
+                  height: Constants.height * 0.05,
+                ),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
                   decoration: BoxDecoration(
@@ -57,20 +69,23 @@ class _LoginState extends State<Login> {
                         margin: EdgeInsets.only(top: 10.0),
                         height: 30,
                         width: 30,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/authentication/indianFlag.png"),
+                            image: AssetImage(
+                                "assets/authentication/indianFlag.png"),
                             fit: BoxFit.fill,
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(
+                        width: 15,
+                      ),
                       Expanded(
                         child: TextField(
                           controller: controller,
                           keyboardType: TextInputType.phone,
                           // maxLength: 10,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Enter Mobile Number',
                             prefixText: '+91  ',
@@ -82,16 +97,18 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 // Spacer(),
-                if(showErrorMessage == true)...[
-                  SizedBox(height: Constants.height * 0.01,),
-                  Text(
+                if (showErrorMessage == true) ...[
+                  SizedBox(
+                    height: Constants.height * 0.01,
+                  ),
+                  const Text(
                     'Please enter a valid number',
-                    style: TextStyle(
-                      color: Colors.red
-                    ),
+                    style: TextStyle(color: Colors.red),
                   )
                 ],
-                SizedBox(height: Constants.height * 0.1,),
+                SizedBox(
+                  height: Constants.height * 0.1,
+                ),
                 // Material(
                 //   borderRadius: BorderRadius.circular(80),
                 //   elevation: 5,
@@ -101,47 +118,59 @@ class _LoginState extends State<Login> {
                 //     child:
                 //   ),
                 // ),
-                SizedBox(height: Constants.height * 0.03,)
+                SizedBox(
+                  height: Constants.height * 0.03,
+                )
               ],
             ),
           ),
         ),
         floatingActionButton: Container(
-          margin: EdgeInsets.only(right: Constants.width * 0.02, bottom: Constants.height * 0.03),
+          margin: EdgeInsets.only(
+              right: Constants.width * 0.02, bottom: Constants.height * 0.03),
           child: FloatingActionButton(
-            onPressed: login,
+            onPressed: () => login(),
             backgroundColor: Constants.themeColor,
-            child: Image.asset('assets/icons/arrowRight.png', width: Constants.width * 0.05,),
+            child: Image.asset(
+              'assets/icons/arrowRight.png',
+              width: Constants.width * 0.05,
+            ),
           ),
         ),
       ),
     );
   }
 
-  bool isMobileNumberValid(){
+  bool isMobileNumberValid() {
     String mobileNumber = controller.text.toString();
     String regexPattern = r'^(?:[+0][1-9])?[0-9]{10}$';
-    var regExp = new RegExp(regexPattern);
-    if(mobileNumber.length == 0 || regExp.hasMatch(mobileNumber) == false){
+    var regExp = RegExp(regexPattern);
+    if (mobileNumber.length == 0 || regExp.hasMatch(mobileNumber) == false) {
       setState(() {
         showErrorMessage = true;
+        log("setSta $showErrorMessage");
       });
+      log("ret false");
       return false;
     }
+    log("ret true");
     return true;
   }
 
-  void login() async {
-    if(isMobileNumberValid() == true){
-      Navigator.pushNamed(context, '/VerifyOtp');
-      setState((){
-        showErrorMessage = false;
-      });
-    }else{
-      setState((){
-        showErrorMessage = true;
-      });
-    }
-
+  login() async {
+    // try {
+    //   log("try $controller.text");
+    //   if (isMobileNumberValid() == true) {
+    //     Client client = Client();
+    //     UserEndPointRepsitory repsitory =
+    //         UserEndPointRepsitory(client: client.init());
+    //     log("message");
+    //     await repsitory.loginApi(phoneNo: controller.text);
+    //     // Navigator.pushNamed(context, '/VerifyOtp');
+    //     log("cicked $controller");
+    //   }
+    // } catch (error) {
+    //   log(error.toString());
+    // }
   }
 }

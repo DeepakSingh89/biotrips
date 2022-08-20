@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "549282736990",
+    "project_id": "biotrips-emp",
+    "storage_bucket": "biotrips-emp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549282736990:android:17d1f319db27fb9b9ffdcf",
+        "android_client_info": {
+          "package_name": "com.kilobytetech.biotrips"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549282736990-u0g8mscpsaeg599tlugun6kk0ecgdrvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcaOfLjcJn6T1v08BVoww6o0j9NNiZF0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549282736990-u0g8mscpsaeg599tlugun6kk0ecgdrvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

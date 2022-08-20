@@ -1,9 +1,5 @@
-import 'dart:developer';
 
 import 'package:biotrips/helpers/constants.dart';
-import 'package:biotrips/helpers/utils.dart';
-import 'package:biotrips/view/components/emergency/emergency_dialog.dart';
-import 'package:biotrips/view/screens/home/trip_status.dart';
 import 'package:flutter/material.dart';
 
 class EmergencyScreen extends StatefulWidget {
