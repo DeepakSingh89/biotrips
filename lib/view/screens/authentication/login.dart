@@ -158,19 +158,19 @@ class _LoginState extends State<Login> {
   }
 
   login() async {
-    // try {
-    //   log("try $controller.text");
-    //   if (isMobileNumberValid() == true) {
-    //     Client client = Client();
-    //     UserEndPointRepsitory repsitory =
-    //         UserEndPointRepsitory(client: client.init());
-    //     log("message");
-    //     await repsitory.loginApi(phoneNo: controller.text);
-    //     // Navigator.pushNamed(context, '/VerifyOtp');
-    //     log("cicked $controller");
-    //   }
-    // } catch (error) {
-    //   log(error.toString());
-    // }
+    try {
+      log("try $controller.text");
+      if (isMobileNumberValid() == true) {
+        Client client = Client();
+        UserEndPointRepsitory repsitory =
+            UserEndPointRepsitory(client: client.init());
+        log("message");
+        await repsitory.loginApi(phoneNo: controller.text);
+        // Navigator.pushNamed(context, '/VerifyOtp');
+        log("cicked $controller");
+      }
+    } catch (error) {
+      log(error.toString());
+    }
   }
 }
