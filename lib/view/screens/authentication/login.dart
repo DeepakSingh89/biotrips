@@ -14,10 +14,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController controller = TextEditingController();
+  final controller = TextEditingController(text: '');
   bool showErrorMessage = false;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -81,18 +81,19 @@ class _LoginState extends State<Login> {
                         width: 15,
                       ),
                       Expanded(
-                        child: TextField(
-                          controller: controller,
-                          keyboardType: TextInputType.phone,
-                          // maxLength: 10,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Enter Mobile Number',
-                            prefixText: '+91  ',
-                            // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
-                          ),
+                        child:TextField(
+                        controller: controller,
+                        keyboardType: TextInputType.number,
+                        // maxLength: 10,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Enter Mobile Number',
+                          prefixText: '+91  ',
+                          // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
                         ),
-                      ),
+                        //   );
+                        // }),
+                      )),
                     ],
                   ),
                 ),
@@ -143,6 +144,7 @@ class _LoginState extends State<Login> {
 
   bool isMobileNumberValid() {
     String mobileNumber = controller.text.toString();
+    log("mobileNumber $mobileNumber");
     String regexPattern = r'^(?:[+0][1-9])?[0-9]{10}$';
     var regExp = RegExp(regexPattern);
     if (mobileNumber.length == 0 || regExp.hasMatch(mobileNumber) == false) {
@@ -157,15 +159,15 @@ class _LoginState extends State<Login> {
     return true;
   }
 
-  login() async {
+  login() {
     try {
-      log("try $controller.text");
+      log("try ${controller.text}");
       if (isMobileNumberValid() == true) {
         Client client = Client();
         UserEndPointRepsitory repsitory =
             UserEndPointRepsitory(client: client.init());
         log("message");
-        await repsitory.loginApi(phoneNo: controller.text);
+        repsitory.loginApi(phoneNo: controller.text.toString());
         // Navigator.pushNamed(context, '/VerifyOtp');
         log("cicked $controller");
       }

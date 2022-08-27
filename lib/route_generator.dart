@@ -11,8 +11,7 @@ import 'package:biotrips/view/screens/profile/edit_profile.dart';
 import 'package:biotrips/view/screens/profile/help_center.dart';
 import 'package:biotrips/view/screens/profile/notifications.dart';
 import 'package:biotrips/view/screens/safety/safety_guidelines.dart';
-import 'package:biotrips/view/screens/trips/trip_details.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:biotrips/view/screens/trips/trip_details.dart'; 
 import 'package:flutter/material.dart';
 
 class RouteGenerator {

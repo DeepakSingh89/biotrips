@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'helpers/constants.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -22,6 +24,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await GetStorage.init();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
@@ -43,22 +46,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Biotrips',
-        onGenerateRoute: RouteGenerator.generateRoute,
-        theme: ThemeData(
-          // brightness: Brightness.dark,
-          fontFamily: 'regular',
-          primarySwatch: Colors.blue,
-          textTheme: const TextTheme(
-            bodyText1: TextStyle(),
-            bodyText2: TextStyle(),
-          ).apply(bodyColor: Colors.black, displayColor: Colors.black),
-        ),
-        home: Material(child: MyHomePage()),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Biotrips',
+      onGenerateRoute: RouteGenerator.generateRoute,
+      theme: ThemeData(
+        // brightness: Brightness.dark,
+        fontFamily: 'regular',
+        primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(),
+          bodyText2: TextStyle(),
+        ).apply(bodyColor: Colors.black, displayColor: Colors.black),
       ),
+      home: MyHomePage(),
     );
   }
 }
@@ -103,14 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
             context: context,
             builder: (_) {
               return AlertDialog(
-                // title: Text(notification?.title),
-                // content: SingleChildScrollView(
-                //     child: Column(
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: [
-                //     Text(notification.body)],
-                // )),
-              );
+                  // title: Text(notification?.title),
+                  // content: SingleChildScrollView(
+                  //     child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     Text(notification.body)],
+                  // )),
+                  );
             });
       }
     });

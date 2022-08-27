@@ -75,7 +75,7 @@ class CommonLoader {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CircularProgressIndicator(),
+                CircularProgressIndicator(color: Color(0xffFDD015)),
                 SizedBox(height: 8),
                 Text(message ?? 'Loading...'),
               ],

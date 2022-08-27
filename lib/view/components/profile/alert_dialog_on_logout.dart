@@ -1,4 +1,7 @@
+import 'package:biotrips/view/screens/authentication/login.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../helpers/constants.dart';
 
@@ -13,12 +16,21 @@ class _AlertDialogOnLogoutState extends State<AlertDialogOnLogout> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Are you sure want to Logout?', style: TextStyle(fontFamily: 'bold'), textAlign: TextAlign.center,),
-      content: SizedBox(height: Constants.height * 0.005,),
+      title: const Text(
+        'Are you sure want to Logout?',
+        style: TextStyle(fontFamily: 'bold'),
+        textAlign: TextAlign.center,
+      ),
+      content: SizedBox(
+        height: Constants.height * 0.005,
+      ),
       actionsAlignment: MainAxisAlignment.spaceEvenly,
       actions: <Widget>[
         GestureDetector(
-          onTap: (){
+          onTap: () {
+            GetStorage box = GetStorage();
+            box.erase();
+            Get.offAll(() => Login());
           },
           child: Container(
             width: Constants.width * 0.32,
@@ -26,21 +38,21 @@ class _AlertDialogOnLogoutState extends State<AlertDialogOnLogout> {
             margin: EdgeInsets.only(bottom: Constants.height * 0.01),
             decoration: BoxDecoration(
               color: Constants.themeColor,
-              borderRadius: BorderRadius.circular(8),),
+              borderRadius: BorderRadius.circular(8),
+            ),
             child: Center(
               child: Text(
                 'YES',
                 style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'bold',
-                    fontSize: Constants.width * 0.035
-                ),
+                    fontSize: Constants.width * 0.035),
               ),
             ),
           ),
         ),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: Container(
@@ -56,13 +68,11 @@ class _AlertDialogOnLogoutState extends State<AlertDialogOnLogout> {
                 style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'bold',
-                    fontSize: Constants.width * 0.035
-                ),
+                    fontSize: Constants.width * 0.035),
               ),
             ),
           ),
         ),
-
       ],
     );
   }

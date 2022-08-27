@@ -1,6 +1,8 @@
+import 'dart:developer';
 
 import 'package:biotrips/helpers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EmergencyScreen extends StatefulWidget {
   const EmergencyScreen({Key? key}) : super(key: key);
@@ -46,21 +48,24 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
                 SizedBox(
                   height: Constants.height * 0.02,
                 ),
-                Container(
-                  width: Constants.width,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Constants.width * 0.12,
-                      vertical: Constants.height * 0.015),
-                  decoration: BoxDecoration(
-                      color: Color(0xffFF0000),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      'Call Police (100)',
-                      style: TextStyle(
-                          fontFamily: 'semiBold',
-                          color: Colors.white,
-                          fontSize: Constants.width * 0.045),
+                InkWell(
+                  onTap: () => callPolice("100"),
+                  child: Container(
+                    width: Constants.width,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Constants.width * 0.12,
+                        vertical: Constants.height * 0.015),
+                    decoration: BoxDecoration(
+                        color: Color(0xffFF0000),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        'Call Police (100)',
+                        style: TextStyle(
+                            fontFamily: 'semiBold',
+                            color: Colors.white,
+                            fontSize: Constants.width * 0.045),
+                      ),
                     ),
                   ),
                 ),
@@ -100,7 +105,6 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
                         onTap: () async {
                           await openDialog();
                           setState(() {});
-                          // Utils.showAlertDialog(context, EmergencyDialog(), true);
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
@@ -261,5 +265,13 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
                     ],
                   )));
         });
+  }
+
+ Future<void> callPolice(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
   }
 }

@@ -1,16 +1,16 @@
+import 'package:biotrips/controller/profile_controller.dart';
 import 'package:biotrips/helpers/constants.dart';
 import 'package:biotrips/helpers/utils.dart';
-import 'package:biotrips/view/screens/home/home.dart';
-import 'package:biotrips/view/screens/home/temp.dart';
-import 'package:biotrips/view/screens/trips/trips.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:biotrips/view/screens/home/home.dart'; 
+import 'package:biotrips/view/screens/trips/trips.dart'; 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../profile/profile.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  Dashboard({Key? key}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -18,6 +18,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
+  final ProfileController _controller = Get.put(ProfileController());
   List tabs = [
     Home(),
     // Text('trips'),
@@ -26,16 +27,17 @@ class _DashboardState extends State<Dashboard> {
   ];
 
   @override
-  void initState(){
+  void initState() {
     initializeGoogleMapWidget();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: tabs[_selectedIndex],
-        bottomNavigationBar: Container(
+          body: tabs[_selectedIndex],
+          bottomNavigationBar: Container(
             child: BottomNavigationBar(
               elevation: 2,
               backgroundColor: Colors.white,
@@ -45,39 +47,61 @@ class _DashboardState extends State<Dashboard> {
               unselectedItemColor: Colors.black,
               selectedItemColor: Constants.themeColor,
               currentIndex: _selectedIndex,
-              onTap: (index){
+              onTap: (index) {
+                if (index == 2) {
+                  _controller.getProfile();
+                }
                 setState(() {
                   _selectedIndex = index;
                 });
               },
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                  activeIcon: Image.asset('assets/icons/homeFilled.png', height: Constants.height * 0.027,),
-                  icon: Image.asset('assets/icons/home.png', height: Constants.height * 0.027,),
+                  activeIcon: Image.asset(
+                    'assets/icons/homeFilled.png',
+                    height: Constants.height * 0.027,
+                  ),
+                  icon: Image.asset(
+                    'assets/icons/home.png',
+                    height: Constants.height * 0.027,
+                  ),
                   label: 'Home',
                   // backgroundColor: Colors.red,
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset('assets/icons/trips.png', height: Constants.height * 0.027,),
-                  activeIcon: Image.asset('assets/icons/tripsFilled.png', height: Constants.height * 0.027,),
+                  icon: Image.asset(
+                    'assets/icons/trips.png',
+                    height: Constants.height * 0.027,
+                  ),
+                  activeIcon: Image.asset(
+                    'assets/icons/tripsFilled.png',
+                    height: Constants.height * 0.027,
+                  ),
                   label: 'Trips',
                   // backgroundColor: Colors.green,
                 ),
                 BottomNavigationBarItem(
-                  icon: Image.asset('assets/icons/profile.png', height: Constants.height * 0.027,),
-                  activeIcon: Image.asset('assets/icons/profileFilled.png', height: Constants.height * 0.027,),
+                  icon: Image.asset(
+                    'assets/icons/profile.png',
+                    height: Constants.height * 0.027,
+                  ),
+                  activeIcon: Image.asset(
+                    'assets/icons/profileFilled.png',
+                    height: Constants.height * 0.027,
+                  ),
                   label: 'Profile',
                   // backgroundColor: Colors.purple,
                 ),
               ],
             ),
-          )
-      ),
+          )),
     );
   }
 
-  void initializeGoogleMapWidget(){
-    var initialCameraPosition = CameraPosition(target: LatLng(22.2170, 70.7525), zoom: 11.5);
-    Utils.googleMapWidget = Expanded(child: GoogleMap(initialCameraPosition: initialCameraPosition));
+  void initializeGoogleMapWidget() {
+    var initialCameraPosition =
+        CameraPosition(target: LatLng(22.2170, 70.7525), zoom: 11.5);
+    Utils.googleMapWidget = Expanded(
+        child: GoogleMap(initialCameraPosition: initialCameraPosition));
   }
 }
