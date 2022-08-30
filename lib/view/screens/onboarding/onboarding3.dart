@@ -16,7 +16,7 @@ class OnBoarding3 extends StatelessWidget {
             children: [
               SizedBox(height: Constants.height * 0.15,),
               Image.asset('assets/onboarding/onBoarding3Asset.png', fit: BoxFit.fill, height: Constants.height * 0.35,),
-              SizedBox(height: Constants.height * 0.06,),
+              SizedBox(height: Constants.height * 0.04,),
               Text(
                 'Get Notified about your Trips',
                 style: TextStyle(
@@ -25,7 +25,7 @@ class OnBoarding3 extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: Constants.height * 0.03,),
+              SizedBox(height: Constants.height * 0.015,),
               Text(
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                 style: TextStyle(
@@ -37,51 +37,84 @@ class OnBoarding3 extends StatelessWidget {
               ),
               SizedBox(height: Constants.height * 0.03,),
               Image.asset('assets/onboarding/dot3.png', height: Constants.height * 0.01, fit: BoxFit.fill,),
-              Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamedAndRemoveUntil(context, '/Login', (route) => false);
-                    },
-                    child: Text(
-                      'SKIP',
-                      style: TextStyle(
-                          fontFamily: 'semiBold',
-                          color: Color(0xff7A7A7B),
-                          fontSize: Constants.width * 0.045
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
+             Spacer(),
+              
+              GestureDetector(
                     onTap: (){
                       Navigator.pushNamedAndRemoveUntil(context, '/Login', (route) => false);
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.12, vertical: Constants.height * 0.015),
+                      padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.3, vertical: Constants.height * 0.015),
                       decoration: BoxDecoration(
                           color: Constants.themeColor,
                           borderRadius: BorderRadius.circular(10)
                       ),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Next',
+                      child: Text(
+                            'Get Started',
                             style: TextStyle(
                                 fontFamily: 'bold',
                                 fontSize: Constants.width * 0.045
                             ),
                           ),
-                          SizedBox(width: Constants.width * 0.02,),
-                          Image.asset('assets/icons/arrowRight.png', width: Constants.width * 0.03,)
-                        ],
-                      ),
+                      //  Row(
+                      //   children: [
+                      //     Text(
+                      //       'Next',
+                      //       style: TextStyle(
+                      //           fontFamily: 'bold',
+                      //           fontSize: Constants.width * 0.045
+                      //       ),
+                      //     ),
+                      //     SizedBox(width: Constants.width * 0.02,),
+                      //     Image.asset('assets/icons/arrowRight.png', width: Constants.width * 0.03,)
+                      //   ],
+                      // ),
                     ),
-                  )
-                ],
-              ),
-              SizedBox(height: Constants.height * 0.03,)
+                  ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     GestureDetector(
+              //       onTap: (){
+              //         Navigator.pushNamedAndRemoveUntil(context, '/Login', (route) => false);
+              //       },
+              //       child: Text(
+              //         'SKIP',
+              //         style: TextStyle(
+              //             fontFamily: 'semiBold',
+              //             color: Color(0xff7A7A7B),
+              //             fontSize: Constants.width * 0.045
+              //         ),
+              //       ),
+              //     ),
+              //     GestureDetector(
+              //       onTap: (){
+              //         Navigator.pushNamedAndRemoveUntil(context, '/Login', (route) => false);
+              //       },
+              //       child: Container(
+              //         padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.12, vertical: Constants.height * 0.015),
+              //         decoration: BoxDecoration(
+              //             color: Constants.themeColor,
+              //             borderRadius: BorderRadius.circular(10)
+              //         ),
+              //         child: Row(
+              //           children: [
+              //             Text(
+              //               'Next',
+              //               style: TextStyle(
+              //                   fontFamily: 'bold',
+              //                   fontSize: Constants.width * 0.045
+              //               ),
+              //             ),
+              //             SizedBox(width: Constants.width * 0.02,),
+              //             Image.asset('assets/icons/arrowRight.png', width: Constants.width * 0.03,)
+              //           ],
+              //         ),
+              //       ),
+              //     )
+              //   ],
+              // ),
+                SizedBox(height: Constants.height * 0.03,)
             ],
           ),
         ),

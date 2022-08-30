@@ -15,11 +15,13 @@ class _ReusableTripCardState extends State<ReusableTripCard> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: Constants.height * 0.02),
-      padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.03, vertical: Constants.height * 0.02),
+      padding: EdgeInsets.symmetric(
+          horizontal: Constants.width * 0.03,
+          vertical: Constants.height * 0.02),
       decoration: BoxDecoration(
-          color: Color(0xffF5F5F5),
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Color(0xffEAEAEB))
+        color: Color(0xffF5F5F5),
+        borderRadius: BorderRadius.circular(10),
+        // border: Border.all(color: Color(0xffEAEAEB))
       ),
       child: Column(
         children: [
@@ -27,31 +29,42 @@ class _ReusableTripCardState extends State<ReusableTripCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                child: Image.asset('assets/trips/profilePhoto.png', fit: BoxFit.fill, height: Constants.height * 0.06, width: Constants.width * 0.13,),
+                child: Image.asset(
+                  'assets/trips/profilePhoto.png',
+                  fit: BoxFit.fill,
+                  height: Constants.height * 0.06,
+                  width: Constants.width * 0.13,
+                ),
               ),
-              SizedBox(width: Constants.width * 0.04,),
+              SizedBox(
+                width: Constants.width * 0.04,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Avinash Singh',
                     style: TextStyle(
-                        fontFamily: 'bold',
-                        fontSize: Constants.width * 0.04
-                    ),
+                        fontFamily: 'bold', fontSize: Constants.width * 0.04),
                   ),
-                  SizedBox(height: Constants.height * 0.005,),
+                  SizedBox(
+                    height: Constants.height * 0.005,
+                  ),
                   Row(
                     children: [
-                      Image.asset('assets/trips/star.png', height: Constants.height * 0.02,),
-                      SizedBox(width: Constants.width * 0.02,),
+                      Image.asset(
+                        'assets/trips/star.png',
+                        height: Constants.height * 0.02,
+                      ),
+                      SizedBox(
+                        width: Constants.width * 0.02,
+                      ),
                       Text(
                         '4.3',
                         style: TextStyle(
                             color: Color(0xff7A7A7B),
                             fontFamily: 'semiBold',
-                            fontSize: Constants.width * 0.04
-                        ),
+                            fontSize: Constants.width * 0.04),
                       )
                     ],
                   )
@@ -66,87 +79,93 @@ class _ReusableTripCardState extends State<ReusableTripCard> {
                     style: TextStyle(
                         color: Color(0xff7A7A7B),
                         fontFamily: 'semiBold',
-                        fontSize: Constants.width * 0.035
-                    ),
+                        fontSize: Constants.width * 0.035),
                   ),
-                  SizedBox(height: Constants.height * 0.01,),
+                  SizedBox(
+                    height: Constants.height * 0.01,
+                  ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.04, vertical: Constants.height * 0.01),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Constants.width * 0.04,
+                        vertical: Constants.height * 0.01),
                     decoration: BoxDecoration(
                         color: Color(0xffFEFCEB),
                         borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Color(0xff282829))
-                    ),
+                        border: Border.all(color: Color(0xff282829))),
                     child: Text(
                       'Trip started',
                       style: TextStyle(
-                          fontFamily: 'bold',
-                          fontSize: Constants.width * 0.03
-
-                      ),
+                          fontFamily: 'bold', fontSize: Constants.width * 0.03),
                     ),
                   )
                 ],
               )
             ],
           ),
-          SizedBox(height: Constants.height * 0.02,),
+          SizedBox(height: Constants.height * 0.015),
           Container(
             width: Constants.width,
             height: 2,
             color: Color(0xffEAEAEB),
           ),
-          SizedBox(height: Constants.height * 0.02,),
+          SizedBox(
+            height: Constants.height * 0.015,
+          ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset('assets/trips/stepperIcon.png', height: Constants.height * 0.11,),
-              SizedBox(width: Constants.width * 0.04,),
+              Image.asset(
+                'assets/trips/stepperIcon.png',
+                height: Constants.height * 0.11,
+              ),
+              SizedBox(
+                width: Constants.width * 0.03,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Pickup Location',
                     style: TextStyle(
-                        color: Color(0xff7A7A7B),
-                        fontFamily: 'regular'
-                    ),
+                        color: Color(0xff7A7A7B), fontFamily: 'regular'),
                   ),
-                  SizedBox(height: Constants.height * 0.01,),
+                  SizedBox(
+                    height: Constants.height * 0.01,
+                  ),
                   Container(
                     width: Constants.width * 0.77,
                     child: Text(
                       'Dwarka, Sector -65, New Delhi',
                       style: TextStyle(
-                          color: Color(0xff565657),
-                          fontFamily: 'bold'
-                      ),
+                          color: Color(0xff565657), fontFamily: 'bold'),
                     ),
                   ),
-                  SizedBox(height: Constants.height * 0.02,),
+                  SizedBox(
+                    height: Constants.height * 0.017,
+                  ),
                   Container(
                     // width: Constants.width * 0.78,
                     width: Constants.width * 0.76,
-                    height: 1,
-                    color: Color(0xff7A7A7B),
+                    height: 1.3,
+                    color: Color(0xffEAEAEB),
                   ),
-                  SizedBox(height: Constants.height * 0.02,),
+                  SizedBox(
+                    height: Constants.height * 0.015,
+                  ),
                   Text(
                     'Drop Location',
                     style: TextStyle(
-                        color: Color(0xff7A7A7B),
-                        fontFamily: 'regular'
-                    ),
+                        color: Color(0xff7A7A7B), fontFamily: 'regular'),
                   ),
-                  SizedBox(height: Constants.height * 0.01,),
+                  SizedBox(
+                    height: Constants.height * 0.01,
+                  ),
                   Container(
                     width: Constants.width * 0.77,
                     child: Text(
                       'DLF Cyber Hub, Gurgaon',
                       style: TextStyle(
-                          color: Color(0xff565657),
-                          fontFamily: 'bold'
-                      ),
+                          color: Color(0xff565657), fontFamily: 'bold'),
                     ),
                   ),
                 ],

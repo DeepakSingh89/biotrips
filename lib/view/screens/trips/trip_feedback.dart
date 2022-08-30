@@ -80,7 +80,7 @@ class _TripFeedbackState extends State<TripFeedback> {
                         height: 4,
                         width: 60,
                         decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: const Color(0xffEAEAEB),
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),

@@ -39,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
           body: tabs[_selectedIndex],
           bottomNavigationBar: Container(
             child: BottomNavigationBar(
-              elevation: 2,
+              elevation: 4,
               backgroundColor: Colors.white,
               type: BottomNavigationBarType.fixed,
               // selectedLabelStyle: TextStyle(color: Constants.themeColor, fontSize: Constants.width * 0.03),
@@ -59,11 +59,11 @@ class _DashboardState extends State<Dashboard> {
                 BottomNavigationBarItem(
                   activeIcon: Image.asset(
                     'assets/icons/homeFilled.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03,
                   ),
                   icon: Image.asset(
                     'assets/icons/home.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03,
                   ),
                   label: 'Home',
                   // backgroundColor: Colors.red,
@@ -71,11 +71,11 @@ class _DashboardState extends State<Dashboard> {
                 BottomNavigationBarItem(
                   icon: Image.asset(
                     'assets/icons/trips.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03,
                   ),
                   activeIcon: Image.asset(
                     'assets/icons/tripsFilled.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03,
                   ),
                   label: 'Trips',
                   // backgroundColor: Colors.green,
@@ -83,11 +83,11 @@ class _DashboardState extends State<Dashboard> {
                 BottomNavigationBarItem(
                   icon: Image.asset(
                     'assets/icons/profile.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03
                   ),
                   activeIcon: Image.asset(
                     'assets/icons/profileFilled.png',
-                    height: Constants.height * 0.027,
+                    height: Constants.height * 0.03,
                   ),
                   label: 'Profile',
                   // backgroundColor: Colors.purple,

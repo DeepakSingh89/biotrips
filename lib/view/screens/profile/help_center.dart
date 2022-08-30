@@ -111,7 +111,7 @@ class _HelpCenterState extends State<HelpCenter> {
                       margin: EdgeInsets.only(bottom: Constants.height * 0.02),
                       child: Material(
                         borderRadius: BorderRadius.circular(10),
-                        elevation: 1,
+                        elevation: 0.2,
                         child: GFAccordion(
                           titleChild: Text(
                             'What is Bio Trips?',
@@ -127,7 +127,7 @@ class _HelpCenterState extends State<HelpCenter> {
                             ),
                           ),
                           margin: EdgeInsets.all(0),
-                          collapsedIcon: Icon(Icons.keyboard_arrow_right),
+                          collapsedIcon: Icon(Icons.keyboard_arrow_down),
                           expandedIcon: Icon(Icons.keyboard_arrow_down),
                           expandedTitleBackgroundColor: Colors.white,
                           titleBorderRadius: BorderRadius.all(Radius.circular(10)),

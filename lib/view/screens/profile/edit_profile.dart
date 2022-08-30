@@ -24,7 +24,7 @@ class _EditProfileState extends State<EditProfile> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Colors.black,
               )),
@@ -92,7 +92,7 @@ class _EditProfileState extends State<EditProfile> {
                                 onTap: () => controller.pickImage(),
                                 child: Image.asset(
                                   'assets/icons/edit.png',
-                                  scale: 1.1,
+                                  scale: 1.1,fit: BoxFit.fill,
                                 ),
                               ),
                             ),
@@ -103,14 +103,15 @@ class _EditProfileState extends State<EditProfile> {
                     SizedBox(
                       height: Constants.height * 0.07,
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 2, horizontal: Constants.width * 0.05),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.black)),
-                      child: TextFormField(
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(
+                    //       vertical: 2, horizontal: Constants.width * 0.05),
+                    //   decoration: BoxDecoration(
+                    //       color: Colors.white,
+                    //       borderRadius: BorderRadius.circular(8),
+                    //       border: Border.all(color: Colors.black)),
+                    //   child: 
+                      TextFormField(
                         controller: controller.fName,
                         validator: (val) {
                           if (val == "") {
@@ -119,12 +120,22 @@ class _EditProfileState extends State<EditProfile> {
                         },
                         // maxLength: 10,
                         decoration: InputDecoration(
-                          border: InputBorder.none,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color:Colors.black)
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(color: Colors.black)
+                          ),
                           hintText: 'Name',
+                          labelText: 'Name',
+                          labelStyle: const TextStyle(
+                            color: Colors.black,
+                          )
                           // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
                         ),
                       ),
-                    ),
+                    // ),
                     SizedBox(
                       height: Constants.height * 0.04,
                     ),
@@ -162,6 +173,7 @@ class _EditProfileState extends State<EditProfile> {
                                 border: InputBorder.none,
                                 hintText: "99xxxxxxxx",
                                 prefixText: '+91  ',
+                                labelText: 'Phone Number'
                                 // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
                               ),
                             ),
@@ -172,26 +184,28 @@ class _EditProfileState extends State<EditProfile> {
                     SizedBox(
                       height: Constants.height * 0.04,
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 2, horizontal: Constants.width * 0.05),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.black)),
-                      child: TextFormField(
-                        controller: controller.email,
-                        validator: (val) {
-                          if (val == "") {
-                            return "Enter email";
-                          }
-                        },
-                        // maxLength: 10,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
-                          // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
+                    TextFormField(
+                      controller: controller.email,
+                      validator: (val) {
+                        if (val == "") {
+                          return "Enter email";
+                        }
+                      },
+                      // maxLength: 10,
+                      decoration:  InputDecoration(
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color:Colors.black)
                         ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: BorderSide(color: Colors.black)
+                        ),
+                        hintText: 'Email',
+                         labelText: 'Email',
+                         labelStyle: const TextStyle(
+                            color: Colors.black,
+                          )
+                        // prefixStyle: TextStyle(fontWeight: FontWeight.bold)
                       ),
                     ),
                     SizedBox(
@@ -215,7 +229,7 @@ class _EditProfileState extends State<EditProfile> {
                             'Save Changes',
                             style: TextStyle(
                                 fontFamily: 'bold',
-                                fontSize: Constants.width * 0.045),
+                                fontSize: Constants.width * 0.04),
                           ),
                         ),
                       ),

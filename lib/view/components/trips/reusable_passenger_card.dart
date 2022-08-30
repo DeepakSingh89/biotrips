@@ -8,10 +8,10 @@ class ReusablePassengerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: Constants.width * 0.035),
+      margin: EdgeInsets.only(bottom: Constants.width * 0.02),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundImage: AssetImage('assets/profile/profilePhoto.png'),
             radius: 20,
           ),
@@ -26,12 +26,12 @@ class ReusablePassengerCard extends StatelessWidget {
             ),
             width: Constants.width * 0.5,
           ),
-          // Spacer(),
+          Spacer(),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.02, vertical: 5),
+            padding: EdgeInsets.symmetric(horizontal: Constants.width * 0.02, vertical: 4.5),
             decoration: BoxDecoration(
               color: Constants.themeColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(5),
             ),
             child: Row(
               children: [
@@ -44,7 +44,7 @@ class ReusablePassengerCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: Constants.width * 0.015,),
-                Image.asset('assets/trips/tickMark.png')
+                Image.asset('assets/trips/tickMark.png',height: 15,)
               ],
             ),
           )

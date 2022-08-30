@@ -66,13 +66,14 @@ class Profile extends StatelessWidget {
   }
 
   profileInfo() {
-    return _controller.obx((state) => Container(
+    return Container(
           width: Constants.width,
           padding: EdgeInsets.symmetric(
               horizontal: Constants.width * 0.04,
               vertical: Constants.height * 0.02),
           color: Constants.themeColor,
-          child: Column(
+          child: _controller.obx((state) =>
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
@@ -99,7 +100,7 @@ class Profile extends StatelessWidget {
               //       )
               //     : Image.asset(
               //                 'assets/profile/profilePhoto.png',fit: BoxFit.fill,),
-                    ),
+              ),
               SizedBox(
                 height: Constants.height * 0.02,
               ),

@@ -43,7 +43,13 @@ class _NotificationsState extends State<Notifications> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color(0xffEAEAEB))
+                  border: Border.all(color: Color(0xffEAEAEB)),
+                   boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      blurRadius: 5.0
+                    )
+                   ]
                 ),
                 child: Row(
                   children: [
@@ -54,7 +60,7 @@ class _NotificationsState extends State<Notifications> {
                         borderRadius: BorderRadius.circular(50),
                         color: Constants.themeColor
                       ),
-                      child: Image.asset('assets/profile/info.png', scale: 1.7,),
+                      child: Image.asset('assets/profile/info.png',  height: Constants.height * 0.05),
                     ),
                     SizedBox(width: Constants.width * 0.04,),
                     Container(
